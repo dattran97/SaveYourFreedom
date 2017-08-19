@@ -16,6 +16,7 @@
 		4FBA692D1F48AB220074A82C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA692C1F48AB220074A82C /* Extension.swift */; };
 		4FBA692F1F48AB4F0074A82C /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA692E1F48AB4F0074A82C /* Enemy.swift */; };
 		4FBA69311F48AB570074A82C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA69301F48AB570074A82C /* Player.swift */; };
+		4FBA69351F48ABDD0074A82C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA69341F48ABDD0074A82C /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4FBA692C1F48AB220074A82C /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		4FBA692E1F48AB4F0074A82C /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		4FBA69301F48AB570074A82C /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		4FBA69341F48ABDD0074A82C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +66,10 @@
 			children = (
 				4F1C4BE71F45AD2A001C5830 /* AppDelegate.swift */,
 				4F1C4BE91F45AD2A001C5830 /* ViewController.swift */,
-				4F1C4BEB1F45AD2A001C5830 /* Main.storyboard */,
 				4FBA69281F48AB190074A82C /* Classes */,
 				4FBA692B1F48AB220074A82C /* Resourses */,
 				4F1C4BEE1F45AD2A001C5830 /* Assets.xcassets */,
+				4F1C4BEB1F45AD2A001C5830 /* Main.storyboard */,
 				4F1C4BF01F45AD2A001C5830 /* LaunchScreen.storyboard */,
 				4F1C4BF31F45AD2A001C5830 /* Info.plist */,
 			);
@@ -78,8 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				4FBA69291F48AB190074A82C /* Animator.swift */,
-				4FBA692E1F48AB4F0074A82C /* Enemy.swift */,
 				4FBA69301F48AB570074A82C /* Player.swift */,
+				4FBA692E1F48AB4F0074A82C /* Enemy.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				4FBA692C1F48AB220074A82C /* Extension.swift */,
+				4FBA69341F48ABDD0074A82C /* Constants.swift */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				4FBA692D1F48AB220074A82C /* Extension.swift in Sources */,
 				4FBA69311F48AB570074A82C /* Player.swift in Sources */,
 				4F1C4BE81F45AD2A001C5830 /* AppDelegate.swift in Sources */,
+				4FBA69351F48ABDD0074A82C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

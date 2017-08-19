@@ -8,6 +8,14 @@
 
 import UIKit
 
+extension UIView{
+    var presentationFrame:CGRect? {
+        get{
+            return self.layer.presentation()?.frame
+        }
+    }
+}
+
 extension Array {
     func getRandomItem() -> Element? {
         if isEmpty { return nil }
