@@ -10,12 +10,18 @@ import UIKit
 
 class Enemy{
     let element = UIImageView()
+    var moveAnimator:UIViewPropertyAnimator?
+    var rotateAnimator:UIViewPropertyAnimator?
+
     
     init(){
+        element.layer.backgroundColor = UIColor.white.cgColor
+        element.layer.borderWidth = 1
         element.animationImages = [UIImage(named: "enemy_blue_1")!, UIImage(named: "enemy_blue_2")!, UIImage(named: "enemy_blue_3")!, UIImage(named: "enemy_blue_2")!]
-        element.animationDuration = 0.33
+        element.animationDuration = 0.6
         element.startAnimating()
         element.frame.size = CGSize(width: EnemyConstants.size, height: EnemyConstants.size)
+        element.contentMode = .scaleAspectFill
         switch EnemyConstants.directions.getRandomItem()!{
         case .top:
             element.frame.origin = CGPoint(x: CGFloat(arc4random_uniform(UInt32(ScreenSize.width))), y: -EnemyConstants.size)
@@ -29,12 +35,24 @@ class Enemy{
     }
     
     func move(to location: CGPoint){
-        Animator.move(view: self.element, to: location, duration: self.getDuration(location)).startAnimation()
+        moveAnimator = Animator.move(view: self.element, to: location, duration: self.getMoveDuration(to: location))
+        moveAnimator?.startAnimation()
     }
     
-    func getDuration(_ playerLocation: CGPoint) -> TimeInterval {
-        let dx = playerLocation.x - self.element.frame.origin.x
-        let dy = playerLocation.y - self.element.frame.origin.y
-        return TimeInterval(sqrt(dx * dx + dy * dy) / EnemyConstants.speed)
+    func rotate(to point: CGPoint, duration: Double? = nil){
+        guard var angle = self.element.presentationCenter?.getAngle(with: point) else {
+            return
+        }
+        angle = angle - EnemyConstants.defaultAngle
+        rotateAnimator = Animator.rotate(view: self.element, to: angle, duration: duration ?? getRotateDuration(angle))
+        rotateAnimator?.startAnimation()
+    }
+    
+    func getMoveDuration(to location: CGPoint) -> TimeInterval {
+        return TimeInterval(self.element.center.getDistance(to: location)/EnemyConstants.moveSpeed)
+    }
+    
+    func getRotateDuration(_ angle: Double) -> TimeInterval {
+        return angle/Double.pi * EnemyConstants.rotationSpeed
     }
 }

@@ -79,9 +79,9 @@
 		4FBA69281F48AB190074A82C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4FBA69291F48AB190074A82C /* Animator.swift */,
-				4FBA69301F48AB570074A82C /* Player.swift */,
 				4FBA692E1F48AB4F0074A82C /* Enemy.swift */,
+				4FBA69301F48AB570074A82C /* Player.swift */,
+				4FBA69291F48AB190074A82C /* Animator.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

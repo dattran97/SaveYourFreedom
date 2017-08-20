@@ -8,10 +8,38 @@
 
 import UIKit
 
+extension CGPoint{
+    func getAngle(with point:CGPoint) -> Double{
+        if self.x == point.x { return 0 }
+        if self.y == point.y { return Double.pi/2 }
+        let angle = Double(atan((point.x - self.x)/(point.y - self.y)))
+
+        if self.x > point.x && self.y > point.y{
+            return -angle
+        }else if self.x < point.x && self.y > point.y{
+            return 2*Double.pi - angle
+        }
+        return Double.pi - angle
+    }
+    
+    func getDistance(to point:CGPoint) -> Double{
+        let dx = self.x - point.x
+        let dy = self.y - point.y
+        return sqrt(Double(dx * dx + dy * dy))
+    }
+}
+
 extension UIView{
     var presentationFrame:CGRect? {
         get{
             return self.layer.presentation()?.frame
+        }
+    }
+    
+    var presentationCenter:CGPoint? {
+        get{
+            guard let frame = self.presentationFrame else { return nil }
+            return CGPoint(x: frame.origin.x - frame.size.width/2, y: frame.origin.y - frame.size.height/2)
         }
     }
 }
@@ -28,5 +56,16 @@ extension Double {
     func rounded(toPlaces places:Int) -> Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
+    }
+}
+
+extension UserDefaults {
+    static var highscore:Int {
+        set(input){
+            self.standard.setValue(input, forKey: "highscore")
+        }
+        get{
+            return self.standard.value(forKey: "highscore") as? Int ?? 0
+        }
     }
 }
