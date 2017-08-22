@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--HomeVC-->
+        <scene sceneID="AfS-Oq-AhR">
+            <objects>
+                <viewController storyboardIdentifier="HomeVC" id="1T2-FQ-epX" customClass="HomeVC" customModule="SaveYourFreedom" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dSN-0P-B6T"/>
+                        <viewControllerLayoutGuide type="bottom" id="ivx-Eh-e0G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eaj-wh-HVe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rz5-b8-bva" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-839" y="59"/>
+        </scene>
+        <!--GameVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SaveYourFreedom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameVC" id="BYZ-38-t0r" customClass="GameVC" customModule="SaveYourFreedom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -28,7 +47,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch to start!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuR-Be-6nb">
-                                <rect key="frame" x="122.5" y="521.5" width="129" height="24"/>
+                                <rect key="frame" x="123" y="521.5" width="129" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -59,5 +78,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--EndVC-->
+        <scene sceneID="M8O-LW-hIy">
+            <objects>
+                <viewController storyboardIdentifier="EndVC" id="50K-yZ-P6w" customClass="EndVC" customModule="SaveYourFreedom" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z6f-7r-Trl"/>
+                        <viewControllerLayoutGuide type="bottom" id="t2e-11-PbF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RhV-yn-w9v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="boss-baby" translatesAutoresizingMaskIntoConstraints="NO" id="In1-F7-6dK">
+                                <rect key="frame" x="50" y="77" width="275" height="470"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flF-kJ-aZT">
+                                <rect key="frame" x="121" y="597" width="133" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="rhm-nq-L6h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="17"/>
+                                <state key="normal" title="TRY AGAIN ._.">
+                                    <color key="titleColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tryAgainAction:" destination="50K-yZ-P6w" eventType="touchUpInside" id="iXh-DY-ao2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your freedom has ended right now!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="swC-Ju-bhs">
+                                <rect key="frame" x="20" y="40" width="345" height="17"/>
+                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="H0f-18-Ufy">
+                                <rect key="frame" x="175" y="557" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="30"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your score:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Rmn-g1-zVR">
+                                <rect key="frame" x="36" y="535" width="119" height="18"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="In1-F7-6dK" firstAttribute="centerX" secondItem="RhV-yn-w9v" secondAttribute="centerX" id="3q8-Mq-ahR"/>
+                            <constraint firstItem="flF-kJ-aZT" firstAttribute="centerX" secondItem="RhV-yn-w9v" secondAttribute="centerX" id="57d-nE-e5d"/>
+                            <constraint firstItem="H0f-18-Ufy" firstAttribute="leading" secondItem="Rmn-g1-zVR" secondAttribute="trailing" constant="20" id="9Pa-zH-Fgu"/>
+                            <constraint firstItem="Rmn-g1-zVR" firstAttribute="bottom" secondItem="H0f-18-Ufy" secondAttribute="bottom" constant="-4" id="F5O-RU-sk3"/>
+                            <constraint firstItem="H0f-18-Ufy" firstAttribute="top" secondItem="In1-F7-6dK" secondAttribute="bottom" constant="10" id="KjR-aE-g9g"/>
+                            <constraint firstItem="In1-F7-6dK" firstAttribute="top" secondItem="swC-Ju-bhs" secondAttribute="bottom" constant="20" id="P1T-0V-GMk"/>
+                            <constraint firstItem="flF-kJ-aZT" firstAttribute="top" secondItem="H0f-18-Ufy" secondAttribute="bottom" constant="40" id="PDP-gO-ym5"/>
+                            <constraint firstItem="Rmn-g1-zVR" firstAttribute="leading" secondItem="RhV-yn-w9v" secondAttribute="leadingMargin" constant="20" id="WUA-gD-wYn"/>
+                            <constraint firstAttribute="trailing" secondItem="swC-Ju-bhs" secondAttribute="trailing" constant="10" id="cvR-tQ-ZUO"/>
+                            <constraint firstItem="t2e-11-PbF" firstAttribute="top" secondItem="flF-kJ-aZT" secondAttribute="bottom" constant="20" id="gDb-VE-PWo"/>
+                            <constraint firstItem="swC-Ju-bhs" firstAttribute="leading" secondItem="RhV-yn-w9v" secondAttribute="leading" constant="20" id="iAu-up-HF9"/>
+                            <constraint firstItem="swC-Ju-bhs" firstAttribute="top" secondItem="Z6f-7r-Trl" secondAttribute="bottom" constant="20" id="m7o-UW-Big"/>
+                            <constraint firstItem="In1-F7-6dK" firstAttribute="leading" secondItem="RhV-yn-w9v" secondAttribute="leading" constant="50" id="uOv-EV-fAR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnTryAgain" destination="flF-kJ-aZT" id="QcH-Ip-4s6"/>
+                        <outlet property="imgBaby" destination="In1-F7-6dK" id="hU0-kO-5sF"/>
+                        <outlet property="lblMessage" destination="swC-Ju-bhs" id="Ik5-Hv-1gW"/>
+                        <outlet property="lblScore" destination="H0f-18-Ufy" id="qbP-1e-Yny"/>
+                        <outlet property="lblYourScoreText" destination="Rmn-g1-zVR" id="pBm-PO-qsW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="krs-0e-1i9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="824.79999999999995" y="58.920539730134934"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="boss-baby" width="421" height="529"/>
+    </resources>
 </document>

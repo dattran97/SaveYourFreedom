@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GameVC.swift
 //  SaveYourFreedom
 //
 //  Created by Dat on 8/17/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class GameVC: UIViewController {
     
     //MARK: - Outlet
     @IBOutlet weak var lblHighscore: UILabel!
@@ -39,11 +39,7 @@ class ViewController: UIViewController {
         if state == .animating { return }
         //First touch
         if state == .end{
-            lblTouchToStart.isHidden = false
-            player.element.transform = .identity
-            player.element.alpha = 1
-            player.move(to: view.center, duration: 1.5)
-            state = .pending
+            
         }else{
             if state == .pending{
                 self.player.element.layer.removeAllAnimations()
@@ -138,7 +134,16 @@ class ViewController: UIViewController {
             
         }, completion: { _ in
             whiteCircle.removeFromSuperview()
-            self.state = .end
+            self.state = .pending
+
+            let vc = EndVC.getInstance(score: Int(self.lblScore.text!)!)
+            self.present(vc, animated: false, completion: {
+                self.lblTouchToStart.isHidden = false
+                self.player.element.transform = .identity
+                self.player.element.alpha = 1
+                self.player.element.center = self.view.center
+//                self.player.move(to: self.view.center, duration: 1.5)
+            })
         })
     }
     
@@ -220,4 +225,5 @@ class ViewController: UIViewController {
         self.enemies.remove(at: index)
     }
 }
+
 
