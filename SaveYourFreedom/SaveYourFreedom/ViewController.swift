@@ -36,21 +36,22 @@ class ViewController: UIViewController {
     
     //MARK: - touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if state == .animating { return }
         //First touch
         if state == .end{
-            for enemy in enemies{
-                enemy.element.removeFromSuperview()
-            }
-            enemies = []
-            player.moveAnimator?.stopAnimation(true)
+            lblTouchToStart.isHidden = false
+            player.element.transform = .identity
+            player.element.alpha = 1
             player.move(to: view.center, duration: 1.5)
             state = .pending
         }else{
             if state == .pending{
+                self.player.element.layer.removeAllAnimations()
                 startGame()
             }
             
             if let touchLocation = event?.allTouches?.first?.location(in: view) {
+                player.rotate(to: touchLocation)
                 player.move(to: touchLocation, duration: 4)
                 for enemy in enemies{
                     enemy.move(to: touchLocation)
@@ -71,30 +72,74 @@ class ViewController: UIViewController {
     }
     
     private func stopGame(intersectedEnemy: Enemy){
-        state = .end
-        lblTouchToStart.isHidden = false
+        state = .animating
         
         stopTimer()
         stopDisplayLink()
         saveScore()
         
-        for enemy in enemies{
-            if enemy.element != intersectedEnemy.element{
-                enemy.element.removeFromSuperview()
+        for i in (0..<enemies.count).reversed(){
+            removeEnemy(at: i)
+        }
+        
+        player.moveAnimator?.stopAnimation(false)
+        player.rotateAnimator?.stopAnimation(false)
+        animateEndGame()
+    }
+    
+    private func animateEndGame(){
+        //Support variables
+        let playerView = self.player.element
+        let duration:Double = 3
+        var rotateDuration:Double = 0.5
+        let rotate = Animator.rotateWithRepeat(view: playerView, duration: rotateDuration)
+        let rotateAnimationKey:String = "end-screen-rotation"
+
+        //Add sublayer
+        let whiteCircle = UIView()
+        whiteCircle.frame.origin = playerView.frame.origin
+        whiteCircle.frame.size = CGSize(width: PlayerConstants.size, height: PlayerConstants.size)
+        whiteCircle.layer.backgroundColor = UIColor.white.cgColor
+        whiteCircle.layer.cornerRadius = playerView.layer.cornerRadius
+        whiteCircle.alpha = 0
+        self.view.addSubview(whiteCircle)
+        
+        //Add rotation
+        playerView.layer.add(rotate, forKey: rotateAnimationKey)
+        _ = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
+            if rotateDuration > 0.1{
+                rotateDuration = rotateDuration - 0.1
+                Animator.changeRotationDuration(view: playerView, toDuration: rotateDuration, animationKey: rotateAnimationKey)
+            }else{
+                timer.invalidate()
             }
         }
         
-        player.moveAnimator?.pauseAnimation()
-        intersectedEnemy.moveAnimator?.pauseAnimation()
-        intersectedEnemy.rotateAnimator?.pauseAnimation()
-        intersectedEnemy.rotateAnimator?.fractionComplete = 1
-        enemies = [intersectedEnemy]
-        
-//        player.move(to: view.center, duration: 1.5)
-        
-//        for i in (0..<enemies.count).reversed(){
-//            removeEnemy(at: i)
-//        }
+        //Add keyframes
+        UIView.animateKeyframes(withDuration: duration, delay: 0, options: [UIViewKeyframeAnimationOptions(animationOptions: .curveEaseIn)], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
+                playerView.transform = CGAffineTransform(scaleX: 2, y: 2)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.20, relativeDuration: 0.15, animations: {
+                playerView.transform = .identity
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.45, relativeDuration: 0.25, animations: {
+                playerView.alpha = 0
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.45, animations: {
+                whiteCircle.alpha = 1
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.42, relativeDuration: 0.25, animations: {
+                playerView.transform = CGAffineTransform(scaleX: 15, y: 15)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.42, relativeDuration: 0.55, animations: {
+                whiteCircle.transform = CGAffineTransform(scaleX: 45, y: 45)
+            })
+            
+        }, completion: { _ in
+            whiteCircle.removeFromSuperview()
+            self.state = .end
+        })
     }
     
     private func saveScore(){

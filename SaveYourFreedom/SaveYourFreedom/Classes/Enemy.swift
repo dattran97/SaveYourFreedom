@@ -13,12 +13,10 @@ class Enemy{
     var moveAnimator:UIViewPropertyAnimator?
     var rotateAnimator:UIViewPropertyAnimator?
 
-    
     init(){
-        element.layer.backgroundColor = UIColor.white.cgColor
-        element.layer.borderWidth = 1
-        element.animationImages = [UIImage(named: "enemy_blue_1")!, UIImage(named: "enemy_blue_2")!, UIImage(named: "enemy_blue_3")!, UIImage(named: "enemy_blue_2")!]
-        element.animationDuration = 0.6
+        let color:String = EnemyConstants.colors.getRandomItem()!
+        element.animationImages = [UIImage(named: "enemy1_\(color)")!, UIImage(named: "enemy2_\(color)")!, UIImage(named: "enemy3_\(color)")!, UIImage(named: "enemy2_\(color)")!]
+        element.animationDuration = 0.55
         element.startAnimating()
         element.frame.size = CGSize(width: EnemyConstants.size, height: EnemyConstants.size)
         element.contentMode = .scaleAspectFill
@@ -44,6 +42,7 @@ class Enemy{
             return
         }
         angle = angle - EnemyConstants.defaultAngle
+        element.setAnchorPoint(anchorPoint: CGPoint(x: 0.68, y: 0.32))
         rotateAnimator = Animator.rotate(view: self.element, to: angle, duration: duration ?? getRotateDuration(angle))
         rotateAnimator?.startAnimation()
     }

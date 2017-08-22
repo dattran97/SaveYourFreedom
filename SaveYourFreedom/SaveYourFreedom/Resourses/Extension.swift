@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension UIViewKeyframeAnimationOptions {
+    init(animationOptions: UIViewAnimationOptions) {
+        rawValue = animationOptions.rawValue
+    }
+}
+
 extension CGPoint{
     func getAngle(with point:CGPoint) -> Double{
         if self.x == point.x { return 0 }
@@ -42,6 +48,27 @@ extension UIView{
             return CGPoint(x: frame.origin.x - frame.size.width/2, y: frame.origin.y - frame.size.height/2)
         }
     }
+    
+    func setAnchorPoint(anchorPoint: CGPoint) {
+        
+        var newPoint = CGPoint(x: self.bounds.size.width * anchorPoint.x, y: self.bounds.size.height * anchorPoint.y)
+        var oldPoint = CGPoint(x: self.bounds.size.width * self.layer.anchorPoint.x, y: self.bounds.size.height * self.layer.anchorPoint.y)
+        
+        newPoint = newPoint.applying(self.transform)
+        oldPoint = oldPoint.applying(self.transform)
+        
+        var position : CGPoint = self.layer.position
+        
+        position.x -= oldPoint.x
+        position.x += newPoint.x;
+        
+        position.y -= oldPoint.y;
+        position.y += newPoint.y;
+        
+        self.layer.position = position;
+        self.layer.anchorPoint = anchorPoint;
+    }
+
 }
 
 extension Array {
