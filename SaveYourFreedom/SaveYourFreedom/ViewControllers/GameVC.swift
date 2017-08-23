@@ -83,78 +83,6 @@ final class GameVC: UIViewController {
         animateEndGame()
     }
     
-    private func animateEndGame(){
-        //Support variables
-        let playerView = self.player.element
-        let duration:Double = 3
-        var rotateDuration:Double = 0.5
-        let rotate = Animator.rotateWithRepeat(view: playerView, duration: rotateDuration)
-        let rotateAnimationKey:String = "end-screen-rotation"
-
-        //Add sublayer
-        let whiteCircle = UIView()
-        whiteCircle.frame.origin = playerView.frame.origin
-        whiteCircle.frame.size = CGSize(width: PlayerConstants.size, height: PlayerConstants.size)
-        whiteCircle.layer.backgroundColor = UIColor.white.cgColor
-        whiteCircle.layer.cornerRadius = playerView.layer.cornerRadius
-        whiteCircle.alpha = 0
-        self.view.addSubview(whiteCircle)
-        
-        //Add rotation
-        playerView.layer.add(rotate, forKey: rotateAnimationKey)
-        _ = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
-            if rotateDuration > 0.1{
-                rotateDuration = rotateDuration - 0.1
-                Animator.changeRotationDuration(view: playerView, toDuration: rotateDuration, animationKey: rotateAnimationKey)
-            }else{
-                timer.invalidate()
-            }
-        }
-        
-        //Add keyframes
-        UIView.animateKeyframes(withDuration: duration, delay: 0, options: [UIViewKeyframeAnimationOptions(animationOptions: .curveEaseIn)], animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
-                playerView.transform = CGAffineTransform(scaleX: 2, y: 2)
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.20, relativeDuration: 0.15, animations: {
-                playerView.transform = .identity
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.45, relativeDuration: 0.25, animations: {
-                playerView.alpha = 0
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.45, animations: {
-                whiteCircle.alpha = 1
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.42, relativeDuration: 0.25, animations: {
-                playerView.transform = CGAffineTransform(scaleX: 15, y: 15)
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.42, relativeDuration: 0.55, animations: {
-                whiteCircle.transform = CGAffineTransform(scaleX: 45, y: 45)
-            })
-            
-        }, completion: { _ in
-            whiteCircle.removeFromSuperview()
-            self.state = .pending
-
-            let vc = EndVC.getInstance(score: Int(self.lblScore.text!)!)
-            self.present(vc, animated: false, completion: {
-                self.lblTouchToStart.isHidden = false
-                self.player.element.transform = .identity
-                self.player.element.alpha = 1
-                self.player.element.center = self.view.center
-//                self.player.move(to: self.view.center, duration: 1.5)
-            })
-        })
-    }
-    
-    private func saveScore(){
-        guard let txtScore = lblScore.text, let score:Int = Int(txtScore) else { return }
-        if score > UserDefaults.highscore{
-            UserDefaults.highscore = score
-            lblHighscore.text = "\(score)"
-        }
-    }
-    
     
     //MARK: - Timer
     private func startTimer(){
@@ -172,7 +100,7 @@ final class GameVC: UIViewController {
         self.view.addSubview(enemy.element)
         
         enemy.move(to: player.element.center)
-        enemy.rotate(to: player.element.center, duration: 0.1)
+//        enemy.rotate(to: player.element.center, duration: 0.1)
     }
     
     //MARK: - DisplayLink
@@ -223,6 +151,76 @@ final class GameVC: UIViewController {
     private func removeEnemy(at index:Int){
         enemies[index].element.removeFromSuperview()
         self.enemies.remove(at: index)
+    }
+    
+    private func saveScore(){
+        guard let txtScore = lblScore.text, let score:Int = Int(txtScore) else { return }
+        if score > UserDefaults.highscore{
+            UserDefaults.highscore = score
+            lblHighscore.text = "\(score)"
+        }
+    }
+    
+    private func animateEndGame(){
+        //Support variables
+        let playerView = self.player.element
+        let duration:Double = 3
+        var rotateDuration:Double = 0.5
+        let rotate = Animator.rotateWithRepeat(view: playerView, duration: rotateDuration)
+        let rotateAnimationKey:String = "end-screen-rotation"
+        
+        //Add sublayer
+        let whiteCircle = UIView()
+        whiteCircle.frame.origin = playerView.frame.origin
+        whiteCircle.frame.size = CGSize(width: PlayerConstants.size, height: PlayerConstants.size)
+        whiteCircle.layer.backgroundColor = UIColor.white.cgColor
+        whiteCircle.layer.cornerRadius = playerView.layer.cornerRadius
+        whiteCircle.alpha = 0
+        self.view.addSubview(whiteCircle)
+        
+        //Add rotation
+        playerView.layer.add(rotate, forKey: rotateAnimationKey)
+        _ = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
+            if rotateDuration > 0.1{
+                rotateDuration = rotateDuration - 0.1
+                Animator.changeRotationDuration(view: playerView, toDuration: rotateDuration, animationKey: rotateAnimationKey)
+            }else{
+                timer.invalidate()
+            }
+        }
+        
+        //Add keyframes
+        UIView.animateKeyframes(withDuration: duration, delay: 0, options: [UIViewKeyframeAnimationOptions(animationOptions: .curveEaseIn)], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
+                playerView.transform = CGAffineTransform(scaleX: 2, y: 2)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.20, relativeDuration: 0.15, animations: {
+                playerView.transform = .identity
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.45, relativeDuration: 0.25, animations: {
+                playerView.alpha = 0
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.45, animations: {
+                whiteCircle.alpha = 1
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.42, relativeDuration: 0.25, animations: {
+                playerView.transform = CGAffineTransform(scaleX: 15, y: 15)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.42, relativeDuration: 0.55, animations: {
+                whiteCircle.transform = CGAffineTransform(scaleX: 45, y: 45)
+            })
+            
+        }, completion: { _ in
+            self.state = .pending
+            whiteCircle.removeFromSuperview()
+            let vc = EndVC.getInstance(score: Int(self.lblScore.text!)!)
+            self.present(vc, animated: false, completion: {
+                self.lblTouchToStart.isHidden = false
+                self.player.element.transform = .identity
+                self.player.element.alpha = 1
+                self.player.element.center = self.view.center
+            })
+        })
     }
 }
 

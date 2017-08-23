@@ -50,7 +50,7 @@ final class EndVC: UIViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animateKeyframes(withDuration: 3, delay: 0, options: UIViewKeyframeAnimationOptions(animationOptions: .curveEaseIn), animations: {
+        UIView.animateKeyframes(withDuration: 2, delay: 0, options: UIViewKeyframeAnimationOptions(animationOptions: .curveEaseIn), animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.7, animations: {
                 self.lblMessage.alpha = 1
                 self.lblYourScoreText.alpha = 1

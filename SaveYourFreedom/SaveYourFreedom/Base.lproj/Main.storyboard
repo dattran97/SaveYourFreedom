@@ -40,33 +40,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3i-j5-nxd">
-                                <rect key="frame" x="20" y="30" width="10.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch to start!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuR-Be-6nb">
                                 <rect key="frame" x="123" y="521.5" width="129" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzt-4C-DPz">
-                                <rect key="frame" x="344.5" y="30" width="10.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZ5-c2-8du">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzt-4C-DPz">
+                                        <rect key="frame" x="349.5" y="25" width="10.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3i-j5-nxd">
+                                        <rect key="frame" x="15" y="25" width="10.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fzt-4C-DPz" secondAttribute="trailing" constant="15" id="LF9-tv-Dz6"/>
+                                    <constraint firstItem="t3i-j5-nxd" firstAttribute="leading" secondItem="wZ5-c2-8du" secondAttribute="leading" constant="15" id="Wl0-TV-Ydk"/>
+                                    <constraint firstItem="t3i-j5-nxd" firstAttribute="top" secondItem="wZ5-c2-8du" secondAttribute="top" constant="25" id="cPn-Gz-gvV"/>
+                                    <constraint firstItem="fzt-4C-DPz" firstAttribute="centerY" secondItem="t3i-j5-nxd" secondAttribute="centerY" id="eQJ-LG-mqJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="sTA-7g-88J"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="fzt-4C-DPz" secondAttribute="trailing" constant="20" id="5YV-NB-6dp"/>
                             <constraint firstItem="NuR-Be-6nb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Xv-mc-nlo"/>
                             <constraint firstItem="NuR-Be-6nb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="200" id="DvI-Uc-V6l"/>
-                            <constraint firstItem="t3i-j5-nxd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="X6d-7b-fa1"/>
-                            <constraint firstItem="t3i-j5-nxd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="jqP-bc-gMG"/>
-                            <constraint firstItem="fzt-4C-DPz" firstAttribute="centerY" secondItem="t3i-j5-nxd" secondAttribute="centerY" id="paK-yU-tMa"/>
+                            <constraint firstItem="wZ5-c2-8du" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UhV-Pw-s2x"/>
+                            <constraint firstItem="wZ5-c2-8du" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="W1g-MF-jG5"/>
+                            <constraint firstAttribute="trailing" secondItem="wZ5-c2-8du" secondAttribute="trailing" id="qaW-u7-vS8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -77,6 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-7.2000000000000002" y="58.920539730134934"/>
         </scene>
         <!--EndVC-->
         <scene sceneID="M8O-LW-hIy">
@@ -123,7 +136,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="In1-F7-6dK" firstAttribute="centerX" secondItem="RhV-yn-w9v" secondAttribute="centerX" id="3q8-Mq-ahR"/>
                             <constraint firstItem="flF-kJ-aZT" firstAttribute="centerX" secondItem="RhV-yn-w9v" secondAttribute="centerX" id="57d-nE-e5d"/>
