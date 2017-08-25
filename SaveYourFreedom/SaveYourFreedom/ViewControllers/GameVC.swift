@@ -100,7 +100,6 @@ final class GameVC: UIViewController {
         self.view.addSubview(enemy.element)
         
         enemy.move(to: player.element.center)
-//        enemy.rotate(to: player.element.center, duration: 0.1)
     }
     
     //MARK: - DisplayLink
@@ -213,12 +212,14 @@ final class GameVC: UIViewController {
         }, completion: { _ in
             self.state = .pending
             whiteCircle.removeFromSuperview()
+            self.lblTouchToStart.isHidden = false
+            self.player.element.transform = .identity
+            self.player.element.alpha = 1
+            self.player.element.center = self.view.center
+            
             let vc = EndVC.getInstance(score: Int(self.lblScore.text!)!)
             self.present(vc, animated: false, completion: {
-                self.lblTouchToStart.isHidden = false
-                self.player.element.transform = .identity
-                self.player.element.alpha = 1
-                self.player.element.center = self.view.center
+
             })
         })
     }
