@@ -218,9 +218,7 @@ final class GameVC: UIViewController {
             self.player.element.center = self.view.center
             
             let vc = EndVC.getInstance(score: Int(self.lblScore.text!)!)
-            self.present(vc, animated: false, completion: {
-
-            })
+            self.present(vc, animated: false, completion: nil)
         })
     }
 }
