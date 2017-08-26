@@ -142,7 +142,7 @@
 					4F1C4BE31F45AD2A001C5830 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = Z7Y9X6WKS2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -313,11 +313,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Z7Y9X6WKS2;
 				INFOPLIST_FILE = SaveYourFreedom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.saveyourfreedom.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9a1ed243-8825-4399-986f-98d07472a930";
+				PROVISIONING_PROFILE_SPECIFIER = saveyourfreedom_development;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -326,11 +330,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = Z7Y9X6WKS2;
 				INFOPLIST_FILE = SaveYourFreedom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.saveyourfreedom.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4b63ae17-bf80-45e1-9b27-d7e47fe5b9b6";
+				PROVISIONING_PROFILE_SPECIFIER = saveyourfreedom_distribution;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
