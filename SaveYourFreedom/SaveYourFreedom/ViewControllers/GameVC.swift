@@ -11,17 +11,26 @@ import UIKit
 final class GameVC: UIViewController {
     
     //MARK: - Outlet
+    @IBOutlet weak var vwTopBar: UIView!
+    @IBOutlet weak var vwGameBackground: UIView!
+    @IBOutlet weak var vwBottomBar: UIView!
+    @IBOutlet weak var lblMessage: UILabel!
     @IBOutlet weak var lblHighscore: UILabel!
     @IBOutlet weak var lblScore: UILabel!
-    @IBOutlet weak var lblTouchToStart: UILabel!
     
     //MARK: - Support variables
+    private var level:Int = 1
     private var state:GameState = .pending
     private var displayLink:CADisplayLink?
     private var beginTime:Double = 0
+    private var currentMessage:String! {
+        didSet{
+            lblMessage.text = currentMessage
+        }
+    }
     
     //Player
-    private let player = Player()
+    private var player = Player()
     
     //Enemies
     private var enemies = [Enemy]()
@@ -30,28 +39,37 @@ final class GameVC: UIViewController {
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configZPosition()
         lblHighscore.text = "\(UserDefaults.highscore)"
         self.view.addSubview(self.player.element)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.lblHighscore.text = "\(UserDefaults.highscore)"
+        self.currentMessage = "Touch to start"
+        self.state = .pending
+        
+        self.player.element.backgroundColor = UIColor.clear
+        self.player.element.alpha = 1
+        self.player.element.center = view.center
     }
     
     //MARK: - touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if state == .animating { return }
         //First touch
-        if state == .end{
-            
-        }else{
-            if state == .pending{
-                self.player.element.layer.removeAllAnimations()
-                startGame()
-            }
-            
-            if let touchLocation = event?.allTouches?.first?.location(in: view) {
-                player.rotate(to: touchLocation)
-                player.move(to: touchLocation, duration: 4)
-                for enemy in enemies{
-                    enemy.move(to: touchLocation)
-                }
+        if state == .pending{
+            self.player.element.layer.removeAllAnimations()
+            startGame()
+        }
+        
+        if let touchLocation = event?.allTouches?.first?.location(in: view) {
+            guard touchLocation.y > vwTopBar.frame.size.height && touchLocation.y < ScreenSize.height - vwBottomBar.frame.size.height else { return }
+            player.rotate(to: touchLocation)
+            player.move(to: touchLocation, duration: 4)
+            for enemy in enemies{
+                enemy.move(to: touchLocation)
             }
         }
     }
@@ -59,7 +77,7 @@ final class GameVC: UIViewController {
     //MARK: - Game state support functions
     private func startGame(){
         state = .playing
-        lblTouchToStart.isHidden = true
+        currentMessage = "Touch around to keep your eggs away from tadpoles"
         lblScore.text = "0"
         beginTime = 0
         
@@ -72,7 +90,6 @@ final class GameVC: UIViewController {
         
         stopTimer()
         stopDisplayLink()
-        saveScore()
         
         for i in (0..<enemies.count).reversed(){
             removeEnemy(at: i)
@@ -147,34 +164,30 @@ final class GameVC: UIViewController {
     }
     
     //MARK: - Support functions
+    private func configZPosition(){
+        vwGameBackground.layer.zPosition = -.greatestFiniteMagnitude
+    }
     private func removeEnemy(at index:Int){
         enemies[index].element.removeFromSuperview()
         self.enemies.remove(at: index)
     }
     
-    private func saveScore(){
-        guard let txtScore = lblScore.text, let score:Int = Int(txtScore) else { return }
-        if score > UserDefaults.highscore{
-            UserDefaults.highscore = score
-            lblHighscore.text = "\(score)"
-        }
-    }
-    
     private func animateEndGame(){
         //Support variables
         let playerView = self.player.element
-        let duration:Double = 3
+        let duration:Double = 2
         var rotateDuration:Double = 0.5
         let rotate = Animator.rotateWithRepeat(view: playerView, duration: rotateDuration)
         let rotateAnimationKey:String = "end-screen-rotation"
         
         //Add sublayer
         let whiteCircle = UIView()
-        whiteCircle.frame.origin = playerView.frame.origin
         whiteCircle.frame.size = CGSize(width: PlayerConstants.size, height: PlayerConstants.size)
+        whiteCircle.center = playerView.center
         whiteCircle.layer.backgroundColor = UIColor.white.cgColor
         whiteCircle.layer.cornerRadius = playerView.layer.cornerRadius
         whiteCircle.alpha = 0
+        whiteCircle.layer.zPosition = -1
         self.view.addSubview(whiteCircle)
         
         //Add rotation
@@ -190,33 +203,44 @@ final class GameVC: UIViewController {
         
         //Add keyframes
         UIView.animateKeyframes(withDuration: duration, delay: 0, options: [UIViewKeyframeAnimationOptions(animationOptions: .curveEaseIn)], animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
+                playerView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                playerView.center.x += 10
+                whiteCircle.center.x += 10
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.1, animations: {
                 playerView.transform = CGAffineTransform(scaleX: 2, y: 2)
+                playerView.center.y += 10
+                whiteCircle.center.y += 10
+                playerView.center.x -= 10
+                whiteCircle.center.x -= 10
             })
-            UIView.addKeyframe(withRelativeStartTime: 0.20, relativeDuration: 0.15, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.1, animations: {
                 playerView.transform = .identity
+                playerView.center.x += 10
+                whiteCircle.center.x += 10
+                
             })
-            UIView.addKeyframe(withRelativeStartTime: 0.45, relativeDuration: 0.25, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.1, animations: {
+                playerView.center.y -= 10
+                whiteCircle.center.y -= 10
+                playerView.center.x -= 10
+                whiteCircle.center.x -= 10
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.4, animations: {
+                playerView.backgroundColor = UIColor.white
                 playerView.alpha = 0
             })
-            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.45, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.05, relativeDuration: 0.75, animations: {
                 whiteCircle.alpha = 1
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.42, relativeDuration: 0.25, animations: {
-                playerView.transform = CGAffineTransform(scaleX: 15, y: 15)
             })
             UIView.addKeyframe(withRelativeStartTime: 0.42, relativeDuration: 0.55, animations: {
                 whiteCircle.transform = CGAffineTransform(scaleX: 45, y: 45)
             })
             
         }, completion: { _ in
-            self.state = .pending
             whiteCircle.removeFromSuperview()
-            self.lblTouchToStart.isHidden = false
-            self.player.element.transform = .identity
-            self.player.element.alpha = 1
-            self.player.element.center = self.view.center
-            
+
             let vc = EndVC.getInstance(score: Int(self.lblScore.text!)!)
             self.present(vc, animated: false, completion: nil)
         })

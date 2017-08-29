@@ -18,8 +18,9 @@ class Enemy{
         element.animationImages = [UIImage(named: "enemy1_\(color)")!, UIImage(named: "enemy2_\(color)")!, UIImage(named: "enemy3_\(color)")!, UIImage(named: "enemy2_\(color)")!]
         element.animationDuration = 0.55
         element.startAnimating()
-        element.frame.size = CGSize(width: EnemyConstants.size, height: EnemyConstants.size)
         element.contentMode = .scaleAspectFill
+        element.layer.zPosition = -1
+        element.frame.size = CGSize(width: EnemyConstants.size, height: EnemyConstants.size)
         switch EnemyConstants.directions.getRandomItem()!{
         case .top:
             element.frame.origin = CGPoint(x: CGFloat(arc4random_uniform(UInt32(ScreenSize.width))), y: -EnemyConstants.size)

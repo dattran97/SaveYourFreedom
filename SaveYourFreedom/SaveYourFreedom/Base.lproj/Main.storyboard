@@ -40,51 +40,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch to start!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuR-Be-6nb">
-                                <rect key="frame" x="106.5" y="524.5" width="162.5" height="18"/>
-                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="18"/>
-                                <color key="textColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZ5-c2-8du">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzt-4C-DPz">
-                                        <rect key="frame" x="349" y="25.5" width="11" height="18"/>
+                                        <rect key="frame" x="349" y="32.5" width="11" height="18"/>
                                         <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="18"/>
-                                        <color key="textColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3i-j5-nxd">
-                                        <rect key="frame" x="15" y="25" width="11" height="18"/>
+                                        <rect key="frame" x="15" y="32" width="11" height="18"/>
                                         <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="18"/>
-                                        <color key="textColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="t3i-j5-nxd" secondAttribute="bottom" constant="10" id="60L-7L-F68"/>
                                     <constraint firstAttribute="trailing" secondItem="fzt-4C-DPz" secondAttribute="trailing" constant="15" id="LF9-tv-Dz6"/>
                                     <constraint firstItem="t3i-j5-nxd" firstAttribute="leading" secondItem="wZ5-c2-8du" secondAttribute="leading" constant="15" id="Wl0-TV-Ydk"/>
-                                    <constraint firstItem="t3i-j5-nxd" firstAttribute="top" secondItem="wZ5-c2-8du" secondAttribute="top" constant="25" id="cPn-Gz-gvV"/>
                                     <constraint firstItem="fzt-4C-DPz" firstAttribute="centerY" secondItem="t3i-j5-nxd" secondAttribute="centerY" id="eQJ-LG-mqJ"/>
-                                    <constraint firstAttribute="height" constant="50" id="sTA-7g-88J"/>
+                                    <constraint firstAttribute="height" constant="60" id="sTA-7g-88J"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5aM-gE-XM6">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch to start!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="NuR-Be-6nb">
+                                        <rect key="frame" x="10" y="16" width="354.5" height="18"/>
+                                        <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2u7-wd-4kc"/>
+                                    <constraint firstItem="NuR-Be-6nb" firstAttribute="leading" secondItem="5aM-gE-XM6" secondAttribute="leading" constant="10" id="7ta-Ay-tqf"/>
+                                    <constraint firstItem="NuR-Be-6nb" firstAttribute="centerX" secondItem="5aM-gE-XM6" secondAttribute="centerX" id="rpI-Zl-T2s"/>
+                                    <constraint firstItem="NuR-Be-6nb" firstAttribute="centerY" secondItem="5aM-gE-XM6" secondAttribute="centerY" id="viM-4T-cNp"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5r-uh-Ln9">
+                                <rect key="frame" x="0.0" y="60" width="375" height="557"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NuR-Be-6nb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Xv-mc-nlo"/>
-                            <constraint firstItem="NuR-Be-6nb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="200" id="DvI-Uc-V6l"/>
+                            <constraint firstItem="B5r-uh-Ln9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="A3o-LP-9j3"/>
                             <constraint firstItem="wZ5-c2-8du" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UhV-Pw-s2x"/>
                             <constraint firstItem="wZ5-c2-8du" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="W1g-MF-jG5"/>
+                            <constraint firstAttribute="trailing" secondItem="5aM-gE-XM6" secondAttribute="trailing" id="g8q-hK-IE9"/>
+                            <constraint firstAttribute="bottom" secondItem="5aM-gE-XM6" secondAttribute="bottom" id="ht2-9r-1xR"/>
+                            <constraint firstItem="5aM-gE-XM6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="i3u-gq-aMP"/>
+                            <constraint firstAttribute="trailing" secondItem="B5r-uh-Ln9" secondAttribute="trailing" id="j0D-0g-olJ"/>
+                            <constraint firstItem="B5r-uh-Ln9" firstAttribute="top" secondItem="wZ5-c2-8du" secondAttribute="bottom" id="pMp-9B-s1J"/>
                             <constraint firstAttribute="trailing" secondItem="wZ5-c2-8du" secondAttribute="trailing" id="qaW-u7-vS8"/>
+                            <constraint firstItem="5aM-gE-XM6" firstAttribute="top" secondItem="B5r-uh-Ln9" secondAttribute="bottom" id="v0J-oz-Ssa"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="lblHighscore" destination="fzt-4C-DPz" id="csS-nO-CME"/>
+                        <outlet property="lblMessage" destination="NuR-Be-6nb" id="xj2-dk-7Ua"/>
                         <outlet property="lblScore" destination="t3i-j5-nxd" id="Jww-n3-3rN"/>
-                        <outlet property="lblTouchToStart" destination="NuR-Be-6nb" id="GXD-HD-96W"/>
+                        <outlet property="vwBottomBar" destination="5aM-gE-XM6" id="DD2-pD-ELt"/>
+                        <outlet property="vwGameBackground" destination="B5r-uh-Ln9" id="IYP-c5-5gW"/>
+                        <outlet property="vwTopBar" destination="wZ5-c2-8du" id="p03-s4-VfU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -104,61 +128,95 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="boss-baby" translatesAutoresizingMaskIntoConstraints="NO" id="In1-F7-6dK">
-                                <rect key="frame" x="50" y="77" width="275" height="470"/>
+                                <rect key="frame" x="50" y="117" width="275" height="432"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your score:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Rmn-g1-zVR">
+                                <rect key="frame" x="36" y="559" width="119" height="18"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efz-13-H7T">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQq-Z2-GTw">
+                                        <rect key="frame" x="349" y="32.5" width="11" height="18"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Six-vz-dTz">
+                                        <rect key="frame" x="15" y="32" width="11" height="18"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW HIGHSCORE!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lr-0Q-b7u">
+                                        <rect key="frame" x="279" y="32.5" width="151.5" height="18"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1rD-G5-xw6"/>
+                                    <constraint firstItem="WQq-Z2-GTw" firstAttribute="centerY" secondItem="Six-vz-dTz" secondAttribute="centerY" id="4VE-c1-M7q"/>
+                                    <constraint firstItem="8lr-0Q-b7u" firstAttribute="centerX" secondItem="WQq-Z2-GTw" secondAttribute="centerX" id="5cA-cf-mg2"/>
+                                    <constraint firstItem="8lr-0Q-b7u" firstAttribute="centerY" secondItem="WQq-Z2-GTw" secondAttribute="centerY" id="Es8-uP-ZKd"/>
+                                    <constraint firstAttribute="bottom" secondItem="Six-vz-dTz" secondAttribute="bottom" constant="10" id="M6v-VM-Whb"/>
+                                    <constraint firstItem="Six-vz-dTz" firstAttribute="leading" secondItem="Efz-13-H7T" secondAttribute="leading" constant="15" id="NwC-4I-AHa"/>
+                                    <constraint firstAttribute="trailing" secondItem="WQq-Z2-GTw" secondAttribute="trailing" constant="15" id="W61-pt-Vtr"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your freedom has ended right now!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="swC-Ju-bhs">
+                                <rect key="frame" x="20" y="80" width="345" height="17"/>
+                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flF-kJ-aZT">
-                                <rect key="frame" x="121" y="597" width="133" height="50"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="rhm-nq-L6h"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="17"/>
                                 <state key="normal" title="TRY AGAIN ._.">
-                                    <color key="titleColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="tryAgainAction:" destination="50K-yZ-P6w" eventType="touchUpInside" id="iXh-DY-ao2"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your freedom has ended right now!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="swC-Ju-bhs">
-                                <rect key="frame" x="20" y="40" width="345" height="17"/>
-                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="H0f-18-Ufy">
-                                <rect key="frame" x="175" y="557" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="30"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your score:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Rmn-g1-zVR">
-                                <rect key="frame" x="36" y="535" width="119" height="18"/>
-                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="18"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Efz-13-H7T" secondAttribute="trailing" id="1vl-DG-5PO"/>
                             <constraint firstItem="In1-F7-6dK" firstAttribute="centerX" secondItem="RhV-yn-w9v" secondAttribute="centerX" id="3q8-Mq-ahR"/>
                             <constraint firstItem="flF-kJ-aZT" firstAttribute="centerX" secondItem="RhV-yn-w9v" secondAttribute="centerX" id="57d-nE-e5d"/>
-                            <constraint firstItem="H0f-18-Ufy" firstAttribute="leading" secondItem="Rmn-g1-zVR" secondAttribute="trailing" constant="20" id="9Pa-zH-Fgu"/>
-                            <constraint firstItem="Rmn-g1-zVR" firstAttribute="bottom" secondItem="H0f-18-Ufy" secondAttribute="bottom" constant="-4" id="F5O-RU-sk3"/>
-                            <constraint firstItem="H0f-18-Ufy" firstAttribute="top" secondItem="In1-F7-6dK" secondAttribute="bottom" constant="10" id="KjR-aE-g9g"/>
+                            <constraint firstItem="flF-kJ-aZT" firstAttribute="top" secondItem="Rmn-g1-zVR" secondAttribute="bottom" constant="40" id="6ON-vh-opp"/>
+                            <constraint firstItem="Efz-13-H7T" firstAttribute="top" secondItem="RhV-yn-w9v" secondAttribute="top" id="8SY-Sl-Oqw"/>
+                            <constraint firstItem="flF-kJ-aZT" firstAttribute="leading" secondItem="RhV-yn-w9v" secondAttribute="leading" id="NCY-0S-pBt"/>
                             <constraint firstItem="In1-F7-6dK" firstAttribute="top" secondItem="swC-Ju-bhs" secondAttribute="bottom" constant="20" id="P1T-0V-GMk"/>
-                            <constraint firstItem="flF-kJ-aZT" firstAttribute="top" secondItem="H0f-18-Ufy" secondAttribute="bottom" constant="40" id="PDP-gO-ym5"/>
+                            <constraint firstItem="Rmn-g1-zVR" firstAttribute="top" secondItem="In1-F7-6dK" secondAttribute="bottom" constant="10" id="VBS-NO-crG"/>
                             <constraint firstItem="Rmn-g1-zVR" firstAttribute="leading" secondItem="RhV-yn-w9v" secondAttribute="leadingMargin" constant="20" id="WUA-gD-wYn"/>
+                            <constraint firstItem="Efz-13-H7T" firstAttribute="leading" secondItem="RhV-yn-w9v" secondAttribute="leading" id="bbA-Y1-FOk"/>
                             <constraint firstAttribute="trailing" secondItem="swC-Ju-bhs" secondAttribute="trailing" constant="10" id="cvR-tQ-ZUO"/>
-                            <constraint firstItem="t2e-11-PbF" firstAttribute="top" secondItem="flF-kJ-aZT" secondAttribute="bottom" constant="20" id="gDb-VE-PWo"/>
+                            <constraint firstItem="t2e-11-PbF" firstAttribute="top" secondItem="flF-kJ-aZT" secondAttribute="bottom" id="gDb-VE-PWo"/>
                             <constraint firstItem="swC-Ju-bhs" firstAttribute="leading" secondItem="RhV-yn-w9v" secondAttribute="leading" constant="20" id="iAu-up-HF9"/>
-                            <constraint firstItem="swC-Ju-bhs" firstAttribute="top" secondItem="Z6f-7r-Trl" secondAttribute="bottom" constant="20" id="m7o-UW-Big"/>
+                            <constraint firstItem="swC-Ju-bhs" firstAttribute="top" secondItem="Efz-13-H7T" secondAttribute="bottom" constant="20" id="s4E-60-Iec"/>
                             <constraint firstItem="In1-F7-6dK" firstAttribute="leading" secondItem="RhV-yn-w9v" secondAttribute="leading" constant="50" id="uOv-EV-fAR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnTryAgain" destination="flF-kJ-aZT" id="QcH-Ip-4s6"/>
                         <outlet property="imgBaby" destination="In1-F7-6dK" id="hU0-kO-5sF"/>
+                        <outlet property="lblHighscore" destination="WQq-Z2-GTw" id="LQs-Lh-EdQ"/>
+                        <outlet property="lblHighscoreText" destination="8lr-0Q-b7u" id="aAg-cE-b9C"/>
                         <outlet property="lblMessage" destination="swC-Ju-bhs" id="Ik5-Hv-1gW"/>
-                        <outlet property="lblScore" destination="H0f-18-Ufy" id="qbP-1e-Yny"/>
+                        <outlet property="lblScore" destination="Six-vz-dTz" id="DBz-bT-tYL"/>
                         <outlet property="lblYourScoreText" destination="Rmn-g1-zVR" id="pBm-PO-qsW"/>
+                        <outlet property="vwTopbar" destination="Efz-13-H7T" id="0dg-hC-k3A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krs-0e-1i9" userLabel="First Responder" sceneMemberID="firstResponder"/>

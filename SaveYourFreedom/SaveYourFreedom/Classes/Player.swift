@@ -14,7 +14,7 @@ class Player{
     var rotateAnimator:UIViewPropertyAnimator?
     
     init(){
-        element.layer.zPosition = CGFloat.greatestFiniteMagnitude
+        element.layer.zPosition = .greatestFiniteMagnitude
         element.frame.size = CGSize(width: PlayerConstants.size, height: PlayerConstants.size)
         element.center.x = ScreenSize.width/2
         element.center.y = ScreenSize.height/2
